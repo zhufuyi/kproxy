@@ -50,7 +50,7 @@ some examples:
     kproxy --hostIP=192.168.8.100 --port=8081 --podName=kubernetes-dashboard --targetPort=8443 --namespace=kube-system --httpProtocol=https --serviceAccount=dashboard-admin
 
 (3) grafana proxy: 
-    kproxy  --hostIP=192.168.8.100  --port=8082  --podName=monitoring-grafana  --targetPort=3000  --namespace=prom  --httpProtocol=http
+    kproxy --hostIP=192.168.8.100 --port=8082 --podName=monitoring-grafana --targetPort=3000 --namespace=prom --httpProtocol=http
 
 spec: 
     if you need publicly accessible, add parameter '--isOpen=true'
