@@ -38,20 +38,22 @@ func init() {
 	flag.Parse()
 
 	if hostIP == "" || port == -1 || podName == "" || targetPort == -1 {
-		fmt.Println("parameter error.\n")
 		fmt.Println(`
+parameter error.
+
 some examples:
 
-kibana proxy: 
-	kproxy --hostIP=192.168.8.100 --port=8080 --podName=nginx-to-kibana --targetPort=80 --namespace=default --httpProtocol=http
+(1) kibana proxy
+    kproxy --hostIP=192.168.8.100 --port=8080 --podName=nginx-to-kibana --targetPort=80 --namespace=default --httpProtocol=http
 
-dashboard proxy: 
-	kproxy --hostIP=192.168.8.100 --port=8081 --podName=kubernetes-dashboard --targetPort=8443 --namespace=kube-system --httpProtocol=https --serviceAccount=dashboard-admin
+(2) dashboard proxy
+    kproxy --hostIP=192.168.8.100 --port=8081 --podName=kubernetes-dashboard --targetPort=8443 --namespace=kube-system --httpProtocol=https --serviceAccount=dashboard-admin
 
-grafana proxy: 
-	kproxy  --hostIP=192.168.8.100  --port=8082  --podName=monitoring-grafana  --targetPort=3000  --namespace=prom  --httpProtocol=http
+(3) grafana proxy: 
+    kproxy  --hostIP=192.168.8.100  --port=8082  --podName=monitoring-grafana  --targetPort=3000  --namespace=prom  --httpProtocol=http
 
-spec: if you need publicly accessible, add parameter '--isOpen=true'
+spec: 
+    if you need publicly accessible, add parameter '--isOpen=true'
 `)
 
 		os.Exit(1)
