@@ -39,10 +39,21 @@ func init() {
 
 	if hostIP == "" || port == -1 || podName == "" || targetPort == -1 {
 		fmt.Println("parameter error.\n")
-		fmt.Println("kibana proxy usage: k8sProxy  --hostIP=192.168.8.100  --port=8080  --podName=nginx-to-kibana  --targetPort=80  --namespace=default  --httpProtocol=http")
-		fmt.Println("dashboard proxy usage: k8sProxy  --hostIP=192.168.8.100  --port=8081  --podName=kubernetes-dashboard  --targetPort=8443  --namespace=kube-system  --httpProtocol=https  --serviceAccount=dashboard-admin")
-		fmt.Println("grafana proxy usage: k8sProxy  --hostIP=192.168.8.100  --port=8082  --podName=monitoring-grafana  --targetPort=3000  --namespace=prom  --httpProtocol=http", "\n")
-		fmt.Println("if you need publicly accessible, add parameter '--isOpen=true'\n")
+		fmt.Println(`
+some examples:
+
+kibana proxy: 
+	kproxy --hostIP=192.168.8.100 --port=8080 --podName=nginx-to-kibana --targetPort=80 --namespace=default --httpProtocol=http
+
+dashboard proxy: 
+	kproxy --hostIP=192.168.8.100 --port=8081 --podName=kubernetes-dashboard --targetPort=8443 --namespace=kube-system --httpProtocol=https --serviceAccount=dashboard-admin
+
+grafana proxy: 
+	kproxy  --hostIP=192.168.8.100  --port=8082  --podName=monitoring-grafana  --targetPort=3000  --namespace=prom  --httpProtocol=http
+
+spec: if you need publicly accessible, add parameter '--isOpen=true'
+`)
+
 		os.Exit(1)
 	}
 }
